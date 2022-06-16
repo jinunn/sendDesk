@@ -30,7 +30,7 @@ spring:
       auto-commit-interval: 1000
 
 # kafka - topicName
-austin:
+send:
   topic-name: send
 
 # 日志
