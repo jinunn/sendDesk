@@ -11,7 +11,7 @@ import java.util.List;
 public class ProcessTemplate {
 
     /**
-     * 业务执行器的 list （汇总所有的业务）
+     * 业务执行器的 list （汇总所有的业务执行器）
      */
     private List<BusinessProcess> processList;
 

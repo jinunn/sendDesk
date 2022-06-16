@@ -35,7 +35,7 @@ public class ProcessController {
             return context;
         }
 
-        // 根据业务code，遍历执行各个责任链上的操作
+        // 根据业务code，获取任务执行器，遍历执行器，进行对应的校验
         List<BusinessProcess> processList = templateMap.get(context.getCode()).getProcessList();
         for (BusinessProcess businessProcess : processList) {
             businessProcess.process(context);
