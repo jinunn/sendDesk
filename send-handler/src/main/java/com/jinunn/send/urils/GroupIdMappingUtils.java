@@ -17,7 +17,7 @@ public class GroupIdMappingUtils {
 
     /**
      * 组装所有的groupIds，不同的渠道不同的消息类型拥有自己的groupId（例如：短信渠道拥有营销、通知、认证）
-     *  组装格式: sms.notice 通知groupI
+     *  组装格式: sms.notice 通知groupId
      *           sms.marketing 营销groupId
      */
     public static List<String> getAllGroupIds() {

@@ -12,6 +12,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 /**
+ * 初始化消费者
+ *
  * @author : JinDun
  * @date : 2022/6/16 17:32
  */
@@ -22,14 +24,14 @@ public class ReceiverStart {
     private ApplicationContext context;
 
     /**
-     * receiver的消费方法常量
+     * Receiver的消费方法常量 消费者类名.方法名
      */
     private static final String RECEIVER_METHOD_NAME = "Receiver.consumer";
 
     /**
-     * 获取得到所有的groupId
+     * 获取得到所有组装的groupId 渠道+类型格式
      */
-    private static List<String> groupIds = GroupIdMappingUtils.getAllGroupIds();
+    private static final List<String> ALL_GROUP_IDS = GroupIdMappingUtils.getAllGroupIds();
 
     /**
      * 下标(用于迭代groupIds位置)
@@ -41,7 +43,7 @@ public class ReceiverStart {
      */
     @PostConstruct
     public void init() {
-        for (int i = 0; i < groupIds.size(); i++) {
+        for (int i = 0; i < ALL_GROUP_IDS.size(); i++) {
             context.getBean(Receiver.class);
         }
     }
@@ -56,7 +58,7 @@ public class ReceiverStart {
             if (element instanceof Method) {
                 String name = ((Method) element).getDeclaringClass().getSimpleName() + "." + ((Method) element).getName();
                 if (RECEIVER_METHOD_NAME.equals(name)) {
-                    attrs.put("groupId", groupIds.get(index));
+                    attrs.put("groupId", ALL_GROUP_IDS.get(index));
                     index++;
                 }
             }
